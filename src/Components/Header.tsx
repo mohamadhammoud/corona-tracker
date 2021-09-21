@@ -4,7 +4,7 @@ const Header = () => {
     const { Option } = Select;
     return (
         <div className="padding-20">
-            <Row className="padding-20 header center box-shadow" style={{ borderRadius: 5 }}>
+            <Row className="padding-20 header box-shadow" style={{ borderRadius: 5 }}>
                 <Col sm={{ span: 2 }} xs={{ span: 6 }} className="right">
                     <img
                         src={covid}

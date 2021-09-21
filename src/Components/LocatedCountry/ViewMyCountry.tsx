@@ -10,12 +10,12 @@ const borderCSS = {
 }
 const ViewMyCountry = (props: IProps) => {
     return (
-        <div className="box-shadow background-color-blue view-my-country padding-20">
+        <div className="box-shadow  view-my-country padding-20">
             {
                 props.myCountry && (
                     <>
-                        <Row className="center">
-                            <Col xs={{ span: 24 }} style={{ ...borderCSS }}>
+                        <Row >
+                            <Col xs={{ span: 24 }} style={borderCSS}>
                                 Your Place of Residence is : &nbsp;
                                 <img
                                     height={24}
@@ -30,26 +30,26 @@ const ViewMyCountry = (props: IProps) => {
                                 {props.myCountry.country}
                             </Col>
                         </Row>
-                        <Row justify="center" className="center">
-                            <Col md={{ span: 8 }} style={{ ...borderCSS }} xs={{ span: 24 }}>
+                        <Row justify="center" >
+                            <Col md={{ span: 8 }} xs={{ span: 24 }} style={borderCSS}>
                                 Confirmed :
                                 <span style={{
-                                    color: "white"
+                                    // color: "white"
                                     //  "#e53e3e"
                                 }}> {props.myCountry.cases.toLocaleString('en-US')} </span>
                             </Col>
-                            <Col md={{ span: 8 }} style={{ ...borderCSS }} xs={{ span: 24 }}>
+                            <Col md={{ span: 8 }} xs={{ span: 24 }} style={borderCSS}>
                                 Recovered :
                                 <span style={{
-                                    color: "white"
+                                    // color: "white"
                                     //  "#108885"
                                     // "#38a169"
                                 }}> {props.myCountry.recovered.toLocaleString('en-US')} </span>
                             </Col>
-                            <Col md={{ span: 8 }} xs={{ span: 24 }} style={{ ...borderCSS }}>
+                            <Col md={{ span: 8 }} xs={{ span: 24 }} style={borderCSS}>
                                 Deaths :
                                 <span style={{
-                                    color: "white"
+                                    // color: "white"
                                     // "#718096"
                                 }}> {props.myCountry.deaths.toLocaleString('en-US')} </span>
                             </Col>

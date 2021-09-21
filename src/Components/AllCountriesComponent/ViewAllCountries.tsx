@@ -115,8 +115,8 @@ const ViewAllCountries = (props: IProps) => {
     }
 
     return (
-        <div style={{ margin: 20 }}>
-            <div className="padding-5 background-color-blue  box-shadow background-color-blue" style={{ borderRadius: 5 }}>
+        <div style={{ padding: 20 }}>
+            <div className="padding-5 box-shadow" style={{ borderRadius: 5 }}>
                 <div style={{ marginLeft: 15, fontSize: 20 }}>
                     <span> Search : </span>
                     <Input
@@ -131,7 +131,7 @@ const ViewAllCountries = (props: IProps) => {
                     className="padding-5 center"
                     columns={columns}
                     dataSource={searchedData.length > 0 ? searchedData : props.data}
-                    scroll={{ x: 1500 }}
+                    scroll={{ x: 1000 }}
                     rowKey={(data) => data.country}
                 />
             </div>
