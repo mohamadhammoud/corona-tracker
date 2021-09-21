@@ -12,12 +12,11 @@ const ViewAllCountries = (props: IProps) => {
     const columns = [
         {
             title: 'Country',
-            width: 250,
             dataIndex: 'country',
             key: 'country',
             sorter: (a: any, b: any) => a.country - b.country,
             render: (value: string, record: any) => {
-                return <div>
+                return <div style={{ width: 200 }}>
                     <img height={24} width={36} src={record.countryInfo.flag} alt="flag" /> &nbsp; {value}
                 </div>
             }
