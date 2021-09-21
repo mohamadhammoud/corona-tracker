@@ -60,7 +60,7 @@ const ViewCountryStatistics = () => {
         const [error, res] = await getCountryDetails(country);
         if (!error) {
             setCountryDetails(res[0]);
-            console.log(res[0]);
+
         }
     }
 

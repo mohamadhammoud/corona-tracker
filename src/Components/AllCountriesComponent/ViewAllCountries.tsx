@@ -110,7 +110,7 @@ const ViewAllCountries = (props: IProps) => {
         const x = props.data.filter((country: any) => {
             return country.country.toLowerCase().includes(value.toLocaleLowerCase());
         });
-        console.log("meshe lhal")
+
         setSearchedData(x);
     }
 
