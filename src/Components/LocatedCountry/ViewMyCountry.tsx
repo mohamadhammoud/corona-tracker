@@ -5,7 +5,7 @@ interface IProps {
     myCountry: any
 }
 const borderCSS = {
-    borderBottom: "0.5px solid black",
+    // borderBottom: "0.5px solid black",
     padding: 10,
 }
 const ViewMyCountry = (props: IProps) => {
@@ -15,7 +15,7 @@ const ViewMyCountry = (props: IProps) => {
                 props.myCountry && (
                     <>
                         <Row >
-                            <Col xs={{ span: 24 }} style={borderCSS}>
+                            <Col xs={{ span: 24 }} style={{ ...borderCSS, borderBottom: "0.5px solid black", }}>
                                 Your Place of Residence is : &nbsp;
                                 <img
                                     height={24}

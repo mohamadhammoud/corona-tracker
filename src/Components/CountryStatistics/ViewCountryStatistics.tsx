@@ -68,6 +68,7 @@ const ViewCountryStatistics = () => {
         if (country) {
             setLocalStorage('country', country);
         }
+        console.log("the country is", country);
         requestForCountryDetails(country);
         request();
     }, []);
@@ -128,9 +129,11 @@ const ViewCountryStatistics = () => {
     }
     return (
         <div className="padding-20">
-            <Line translate={undefined} data={confirmedData} options={options} className="box-shadow" />
-            <Line translate={undefined} data={deathData} options={options} className="margin-top-10 box-shadow" />
+            <Line translate={undefined} data={confirmedData} style={{ maxHeight: 300 }} options={options} className="box-shadow" />
+            <Line translate={undefined} data={deathData} style={{ maxHeight: 300 }} options={options} className="margin-top-10 box-shadow" />
+            <Line translate={undefined} data={RecoveredData} style={{ maxHeight: 300 }} options={options} className="margin-top-10 box-shadow" />
             {/* <Line translate={undefined} data={RecoveredData} options={options} className="margin-top-10 box-shadow" /> */}
+            {console.log(countryDetails)}
             {countryDetails && <div className=" view-my-country box-shadow margin-top-10" style={{ fontSize: 24, backgroundColor: "#d35400" }}>
                 <Row className="padding-20">
                     <Col span={24} style={{ borderBottom: "1px solid black", fontWeight: 700 }}>
@@ -187,7 +190,7 @@ const ViewCountryStatistics = () => {
                     </Col>
                 </Row>
             </div>}
-            <div className="center">
+            <div className="center padding-20">
                 <Button type="primary" style={{ borderRadius: 30, width: 300 }} className="background-color-blue" onClick={() => history.push("/")}>
                     Go Back
                 </Button>
