@@ -68,7 +68,7 @@ const ViewCountryStatistics = () => {
         if (country) {
             setLocalStorage('country', country);
         }
-        console.log("the country is", country);
+
         requestForCountryDetails(country);
         request();
     }, []);
@@ -133,7 +133,6 @@ const ViewCountryStatistics = () => {
             <Line translate={undefined} data={deathData} style={{ maxHeight: 300 }} options={options} className="margin-top-10 box-shadow" />
             <Line translate={undefined} data={RecoveredData} style={{ maxHeight: 300 }} options={options} className="margin-top-10 box-shadow" />
             {/* <Line translate={undefined} data={RecoveredData} options={options} className="margin-top-10 box-shadow" /> */}
-            {console.log(countryDetails)}
             {countryDetails && <div className=" view-my-country box-shadow margin-top-10" style={{ fontSize: 24, backgroundColor: "#d35400" }}>
                 <Row className="padding-20">
                     <Col span={24} style={{ borderBottom: "1px solid black", fontWeight: 700 }}>
