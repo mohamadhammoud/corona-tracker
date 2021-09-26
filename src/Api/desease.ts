@@ -36,6 +36,16 @@ export const getAllCountries = async () => {
 
 
 
+export const getCountryByName = async (country: string) => {
+
+    try {
+        const response = await deseaseURl.get(`/countries/${country}`);
+        return [null, response.data];
+    } catch (error) {
+        return [error, null];
+    }
+}
+
 export const getCountryChart = async (country: string, days: number) => {
 
     try {

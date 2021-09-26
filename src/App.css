@@ -41,6 +41,9 @@
   box-shadow: 2px 2px 2px 2px #006994 ;
 }
 
+.font-size-28 {
+  font-size: 28px;
+}
 .font-size-24 {
   font-size: 24px;
 }
@@ -62,6 +65,7 @@
 
 .header {
   background-color: var(--blue-color);
+  color: #ffff;
   /* var(--green-color); */
   position: "fixed";
    top: 0;

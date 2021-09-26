@@ -1,7 +1,7 @@
 import { Line } from 'react-chartjs-2';
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router'
-import { getCountryChart, getCountryDetails } from '../../Api/desease';
+import { getCountryByName, getCountryChart, getCountryDetails } from '../../Api/desease';
 import { Button, Col, Row } from 'antd';
 
 const ViewCountryStatistics = () => {
@@ -57,11 +57,12 @@ const ViewCountryStatistics = () => {
     }
 
     const requestForCountryDetails = async (value: string) => {
-        const [error, res] = await getCountryDetails(country);
-        if (!error) {
-            setCountryDetails(res[0]);
 
+        const [error, res] = await getCountryByName(country);
+        if (!error) {
+            setCountryDetails(res);
         }
+
     }
 
     useEffect(() => {
@@ -115,9 +116,9 @@ const ViewCountryStatistics = () => {
     const options = {
         //   maintainAspectRatio: false,
         scales: {
-            y: {
-                beginAtZero: true
-            },
+            // y: {
+            //     beginAtZero: true
+            // },
             x: {
                 beginAtZero: true
             }
@@ -129,19 +130,15 @@ const ViewCountryStatistics = () => {
     }
     return (
         <div className="padding-20">
-            <Line translate={undefined} data={confirmedData} style={{ maxHeight: 300 }} options={options} className="box-shadow" />
-            <Line translate={undefined} data={deathData} style={{ maxHeight: 300 }} options={options} className="margin-top-10 box-shadow" />
-            <Line translate={undefined} data={RecoveredData} style={{ maxHeight: 300 }} options={options} className="margin-top-10 box-shadow" />
-            {/* <Line translate={undefined} data={RecoveredData} options={options} className="margin-top-10 box-shadow" /> */}
-            {countryDetails && <div className=" view-my-country box-shadow margin-top-10" style={{ fontSize: 24, backgroundColor: "#d35400" }}>
-                <Row className="padding-20">
+            {countryDetails && <div className=" view-my-country box-shadow" style={{ fontSize: 24, backgroundColor: "#d35400" }}>
+                <Row className="padding-20" justify="center">
                     <Col span={24} style={{ borderBottom: "1px solid black", fontWeight: 700 }}>
                         Country Details :
                     </Col>
                     <Col sm={{ span: 8 }} xs={{ span: 24 }} style={{ ...borderCSS }}>
                         Country : &nbsp;
                         <span style={{ color: "white" }} >
-                            {countryDetails.name}
+                            {countryDetails.country}
                         </span>
                     </Col>
                     <Col sm={{ span: 8 }} xs={{ span: 24 }} style={{ ...borderCSS }}>
@@ -150,17 +147,15 @@ const ViewCountryStatistics = () => {
                         <img
                             height={24}
                             width={36}
-                            src={
-                                countryDetails.flag ? countryDetails.flag : ""
-                            }
+                            src={countryDetails.countryInfo.flag}
                             alt="flag"
                         />
                     </Col>
                     <Col sm={{ span: 8 }} xs={{ span: 24 }} style={{ ...borderCSS }}>
-                        Region :
+                        Continent :
                         &nbsp;
                         <span style={{ color: "white" }}>
-                            {countryDetails.region}
+                            {countryDetails.continent}
                         </span>
                     </Col>
                     <Col sm={{ span: 8 }} xs={{ span: 24 }} style={{ ...borderCSS }}>
@@ -169,28 +164,31 @@ const ViewCountryStatistics = () => {
                             color: "white"
                             //  "#e53e3e"
 
-                        }}> {countryDetails.population}
+                        }}> {countryDetails.population.toLocaleString()}
                         </span>
                     </Col>
                     <Col sm={{ span: 8 }} xs={{ span: 24 }} style={{ ...borderCSS }}>
-                        Capital :
+                        Iso3 :
                         <span style={{
                             color: "white"
                             //  "#108885"
                             // "#38a169"
-                        }}> {countryDetails.capital} </span>
+                        }}> {countryDetails.countryInfo.iso3} </span>
                     </Col>
                     <Col sm={{ span: 8 }} xs={{ span: 24 }} style={{ ...borderCSS }}>
-                        Currency :
+                        Iso2 :
                         <span style={{
                             color: "white"
                             // "#718096"
-                        }}> {countryDetails.currencies[0].name} </span>
+                        }}> {countryDetails.countryInfo.iso2} </span>
                     </Col>
                 </Row>
             </div>}
+            <Line translate={undefined} data={confirmedData} style={{ maxHeight: 300 }} options={options} className="box-shadow" />
+            <Line translate={undefined} data={deathData} style={{ maxHeight: 300 }} options={options} className="margin-top-10 box-shadow" />
+            {/* <Line translate={undefined} data={RecoveredData} style={{ maxHeight: 300 }} options={options} className="margin-top-10 box-shadow" /> */}
             <div className="center padding-20">
-                <Button type="primary" style={{ borderRadius: 30, width: 300 }} className="background-color-blue" onClick={() => history.push("/")}>
+                <Button type="primary" style={{ borderRadius: 30, width: 250 }} className="background-color-blue" onClick={() => history.push("/")}>
                     Go Back
                 </Button>
             </div>
